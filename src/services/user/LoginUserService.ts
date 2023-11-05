@@ -1,7 +1,6 @@
 import prismaClient from"../../prisma/index"
 import { compare } from "bcryptjs"
 import { sign } from "jsonwebtoken"
-
 interface AuthRequest {
 
   email: string
@@ -44,7 +43,6 @@ class LoginUserService{
        expiresIn: '30d'
      }
     )
-
     return {
       user: {
         name: user.name,

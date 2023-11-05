@@ -35,15 +35,15 @@ model Category {
 model Product {
   id          String    @id @default(uuid())
   name        String
-  price       Float
+  price       String
   banner      String
   description String
   createdAt   DateTime? @default(now())
   updatedAt   DateTime? @default(now())
 
-  category Category @relation(fields: [categoryId], references: [id])
+  category Category @relation(fields: [category_id], references: [id])
 
-  categoryId String
+  category_id String
 
   items Item[]
 
@@ -73,8 +73,8 @@ model Item {
   order   Order  @relation(fields: [orderId], references: [id])
   orderId String
 
-  product   Product @relation(fields: [productId], references: [id])
-  productId String
+  product    Product @relation(fields: [product_id], references: [id])
+  product_id String
 
   @@map("items")
 }
