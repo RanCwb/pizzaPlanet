@@ -7,6 +7,7 @@ import { CreateCategoryController } from './controllers/category/CreateCategoryC
 import { ListCategoryController } from './controllers/category/ListCategoryController';
 import { CreateProductsController } from './controllers/products/CreateProductsController';
 import { FilterProductsController } from './controllers/products/FilterProductsController';
+import { CreateOrderController } from './controllers/order/CreateOrderController';
 import isAuth from './middlewares/isAuth';
 
 import  uploadConfig  from './config/multer';
@@ -54,6 +55,11 @@ router.get('/category/filter', isAuth, (request: Request, response: Response) =>
   return new FilterProductsController().handle(request, response)
 })
 
+// oerder routes
+
+router.post('/order', isAuth, (request: Request, response: Response) => {
+  return new CreateOrderController().handle(request, response)
+})
 
 
 export  { router }
