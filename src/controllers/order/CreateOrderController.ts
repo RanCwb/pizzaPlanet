@@ -6,8 +6,6 @@ import { Request,Response } from "express";
 
 class CreateOrderController {
 
-  
-
   async handle(request: Request, response: Response) {
     
     const {table, name} = request.body;

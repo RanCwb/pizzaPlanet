@@ -8,6 +8,13 @@ import { ListCategoryController } from './controllers/category/ListCategoryContr
 import { CreateProductsController } from './controllers/products/CreateProductsController';
 import { FilterProductsController } from './controllers/products/FilterProductsController';
 import { CreateOrderController } from './controllers/order/CreateOrderController';
+import { DeleterOrderController } from './controllers/order/DeleterOrderController';
+import { AddItemsTableController } from './controllers/order/AddItemsTableController';
+import { RemoveItemTableController } from './controllers/order/RemoveItemTableController';
+import { SendOrderToTableController } from './controllers/order/SendOrderToTableController';
+import { ListOrdersController } from './controllers/order/ListOrdersController';
+import { DetailOrderController } from './controllers/order/DetailOrderController'; 
+import { FinishOrderController } from './controllers/order/FinishOrderController';
 import isAuth from './middlewares/isAuth';
 
 import  uploadConfig  from './config/multer';
@@ -60,6 +67,25 @@ router.get('/category/filter', isAuth, (request: Request, response: Response) =>
 router.post('/order', isAuth, (request: Request, response: Response) => {
   return new CreateOrderController().handle(request, response)
 })
-
-
+router.delete('/delete/order', isAuth, (request: Request, response: Response) => {
+  return new DeleterOrderController().handle(request, response)
+})
+router.post('/order/add/item', isAuth, (request: Request, response: Response) => {
+  return new AddItemsTableController().handle(request, response)
+})
+router.delete('/order/remove/item', isAuth, (request: Request, response: Response) => {
+  return new RemoveItemTableController().handle(request, response)
+})
+router.put('/order/send', isAuth, (request: Request, response: Response) => {
+  return new SendOrderToTableController().handle(request, response)
+})
+router.get('/order/list', isAuth, (request: Request, response: Response) => {
+  return new ListOrdersController().handle(request, response)
+})
+router.get('/order/detail', isAuth, (request: Request, response: Response) => {
+  return new DetailOrderController().handle(request, response)
+})
+router.put('/order/finish', isAuth, (request: Request, response: Response) => {
+  return new FinishOrderController().handle(request, response)
+})
 export  { router }
